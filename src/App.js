@@ -7,36 +7,40 @@ import SignUp from './page/SignUp/SignUp';
 import Header from './component/Header/Header';
 import AuthProvider from './component/contexts/AuthProvider/AuthProvider';
 import Purchase from './page/Purchase/Purchase';
+import DashBord from './page/DashBord/DashBord';
+import PrivateRoute from './component/PrivetRoute/PrivetRoute';
 
 function App() {
   return (
     <div className='App'>
       <AuthProvider>
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route exact path='/'>
-            <Home></Home>
-          </Route>
-          <Route path='/home'>
-            <Home></Home>
-          </Route>
-          <Route path='/shop'>
-            <Shop></Shop>
-          </Route>
-          <Route path='/login'>
-            <Login></Login>
-          </Route>
-          <Route path='/signup'>
-            <SignUp></SignUp>
-          </Route>
-          <Route path='/products/:id'>
-           <Purchase></Purchase>
-          </Route>
-        </Switch>
-      </Router>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route exact path='/'>
+              <Home></Home>
+            </Route>
+            <Route path='/home'>
+              <Home></Home>
+            </Route>
+            <PrivateRoute path='/shop'>
+              <Shop></Shop>
+            </PrivateRoute>
+            <Route path='/login'>
+              <Login></Login>
+            </Route>
+            <Route path='/signup'>
+              <SignUp></SignUp>
+            </Route>
+            <Route path='/products/:id'>
+              <Purchase></Purchase>
+            </Route>
+            <Route path='/dashbord'>
+              <DashBord></DashBord>
+            </Route>
+          </Switch>
+        </Router>
       </AuthProvider>
-     
     </div>
   );
 }

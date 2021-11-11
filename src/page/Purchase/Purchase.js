@@ -22,7 +22,7 @@ const Purchase = () => {
           <Productdes></Productdes>
           </Grid>
       <Grid item xs={6} md={4}>
-          <PurchaseForm></PurchaseForm>
+          <PurchaseForm id={id} ></PurchaseForm>
           </Grid>
 
       </Grid>

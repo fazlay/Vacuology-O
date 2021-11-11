@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
 
 const Header = () => {
-  const {logOut,user}=useAuth()
+  const { logOut, user } = useAuth();
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -57,6 +57,24 @@ const Header = () => {
               </Typography>
             </NavLink>
             <NavLink
+              to='/dashbord'
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                m: 1,
+                fontWeight: 'bold',
+              }}
+              activeStyle={{
+                fontWeight: 'bold',
+                color: 'red',
+                m: 1,
+              }}
+            >
+              <Typography variant='p' component='p' sx={{ mx: 3 }}>
+                DASHBORD
+              </Typography>
+            </NavLink>
+            <NavLink
               to='/login'
               style={{
                 textDecoration: 'none',
@@ -70,7 +88,7 @@ const Header = () => {
                 m: 1,
               }}
             >
-               <Button color='inherit'>LOGIN</Button>
+              <Button color='inherit'>LOGIN</Button>
             </NavLink>
             <NavLink
               to='/signup'
@@ -86,12 +104,16 @@ const Header = () => {
                 m: 1,
               }}
             >
-               <Button color='inherit'>SIGNUP</Button>
+              <Button color='inherit'>SIGNUP</Button>
             </NavLink>
-           {user.email && <Typography variant='p' component='p' sx={{ mx: 3 }}>
-              {user.email}
-              </Typography>}
-            <Button onClick={logOut}color='inherit'>LOGOUT</Button>
+            {user.email && (
+              <Typography variant='p' component='p' sx={{ mx: 3 }}>
+                {user.email}
+              </Typography>
+            )}
+            <Button onClick={logOut} color='inherit'>
+              LOGOUT
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>

@@ -18,7 +18,7 @@ const Login = () => {
     console.log(userInfo);
   };
 
-  const handleSumit = (e) => {
+  const handleSubmit = (e) => {
     loginUser(userInfo.email, userInfo.password,location,history)
     console.log(userInfo.email, userInfo.password);
     e.preventDefault();
@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <Container sx={{ width: '25%' }}>
       <h2>This is Login</h2>
-      <form onSubmit={handleSumit}>
+      <form onSubmit={handleSubmit}>
         <TextField
           id='standard-email-input'
           label='Email'
