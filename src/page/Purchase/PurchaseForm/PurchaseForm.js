@@ -1,35 +1,41 @@
-import { Button, Container, TextField } from '@mui/material';
+import { Alert, Button, Container, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import useAuth from '../../../component/hook/useAuth';
 
 const PurchaseForm = ({ id }) => {
   const { user } = useAuth();
-  let orderDetails = {
+  const orderDetails = {
     productId: id,
-    name: '',
-    email: `${user.email}`,
-    mobile: '',
-    country: '',
-    city: '',
-    address: '',
+    name: user.name,
+    email: user.email,
+    mobile: '017121212',
+    country: 'Bangladesh',
+    city: 'Dhaka',
+    address: 'House# 5/12, Road#3',
+    status: 'pending',
   };
+  const [purchaseSuccess, setPurchaseSuccess] = useState(false);
+  const [orderinfo, setOrderInfo] = useState(orderDetails);
 
   const handleInfoBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
-    orderDetails[field] = value;
-    orderDetails = { ...orderDetails };
-    console.log(orderDetails);
+    const newOrderDetails = { ...orderinfo };
+    newOrderDetails[field] = value;
+
+    console.log(newOrderDetails);
+    setOrderInfo(newOrderDetails);
   };
   const handlePurchaseSubmit = (e) => {
     e.preventDefault();
-
     console.log('inside function');
     fetch('http://localhost:5000/orders', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(orderDetails),
-    }).then()
+      body: JSON.stringify(orderinfo),
+    })
+      .then((res) => res.json())
+      .then((data) => setPurchaseSuccess(data.acknowledged));
   };
   return (
     <Container>
@@ -46,7 +52,7 @@ const PurchaseForm = ({ id }) => {
         <TextField
           sx={{ width: '75%', my: 2 }}
           name='email'
-          defaultValue={orderDetails?.email}
+          defaultValue={user.email}
           label='Email'
           variant='standard'
           onBlur={handleInfoBlur}
@@ -56,6 +62,7 @@ const PurchaseForm = ({ id }) => {
           name='mobile'
           label='Mobile'
           variant='standard'
+          defaultValue='017121212'
           onBlur={handleInfoBlur}
         />
         <TextField
@@ -63,6 +70,7 @@ const PurchaseForm = ({ id }) => {
           name='country'
           label='Country'
           variant='standard'
+          defaultValue='Bangladesh'
           onBlur={handleInfoBlur}
         />
         <TextField
@@ -70,6 +78,7 @@ const PurchaseForm = ({ id }) => {
           name='city'
           label='City'
           variant='standard'
+          defaultValue='Dhaka'
           onBlur={handleInfoBlur}
         />
         <TextField
@@ -77,6 +86,7 @@ const PurchaseForm = ({ id }) => {
           name='address'
           label='Address'
           variant='standard'
+          defaultValue='House# 5/12, Road#3'
           onBlur={handleInfoBlur}
         />
         <Button type='submit' varient='contained' sx={{ width: '75%' }}>
@@ -84,6 +94,9 @@ const PurchaseForm = ({ id }) => {
           PLACE ORDER
         </Button>
       </form>
+      {purchaseSuccess && (
+        <Alert severity='success'>Purchased successfully!</Alert>
+      )}
     </Container>
   );
 };

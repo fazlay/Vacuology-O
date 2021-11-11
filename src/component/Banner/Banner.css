@@ -1,0 +1,8 @@
+.bannerImage {
+  color: white;
+  background-image: url('https://i.ibb.co/JKYVnZd/024037-4516.jpg');
+  height: 600px;
+
+  background-repeat: no-repeat;
+  background-size: cover
+}

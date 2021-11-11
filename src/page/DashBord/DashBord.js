@@ -23,6 +23,8 @@ import ManageOrder from './ManageOrder/ManageOrder';
 import MyOrder from './MyOrder/MyOrder';
 import AddProduct from './AddProduct/AddProduct';
 import { Link } from 'react-router-dom';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
+import useAuth from '../../component/hook/useAuth';
 
 const drawerWidth = 240;
 
@@ -74,6 +76,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const DashBord = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const { admin } = useAuth();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,10 +131,10 @@ const DashBord = () => {
           </DrawerHeader>
           <Divider />
           <List>
+            <Link to={`${url}/myorder`}>My Orders</Link>
 
-            <Link sx={{mx:2}} to={`${url}/manageorder`}>Manage Orders</Link>
-            <Link  to={`${url}/myorder`}>My Orders</Link>
-            <Link  to={`${url}/addproduct`}> Add Product</Link>
+           
+
             {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
@@ -140,6 +144,11 @@ const DashBord = () => {
               </ListItem>
             ))} */}
           </List>
+        { admin? <List>
+          <Link to={`${url}/manageorder`}>Manage Orders</Link>
+            <Link to={`${url}/addproduct`}> Add Product</Link>
+            <Link to={`${url}/makeadmin`}> Make A Admin</Link>
+          </List>:''}
         </Drawer>
         {/* <Main open={open}>
           <DrawerHeader />
@@ -155,6 +164,9 @@ const DashBord = () => {
           </Route>
           <Route path={`${path}/addproduct`}>
             <AddProduct></AddProduct>
+          </Route>
+          <Route path={`${path}/makeadmin`}>
+            <MakeAdmin></MakeAdmin>
           </Route>
         </Switch>
       </Box>

@@ -82,9 +82,21 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
+  //admin checking ---------------------------------
+  const adminUrl = `http://localhost:5000/user/${user?.email}`;
 
-  const saveUser = (displayName,email, method) => {
-    const user = { displayName,email };
+  useEffect(() => {
+    fetch(adminUrl)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user?.email]);
+
+  //admin checking ---------------------------------
+
+
+
+  const saveUser = (displayName, email, method) => {
+    const user = { displayName, email };
     console.log(user);
     fetch('http://localhost:5000/user', {
       method: method,
