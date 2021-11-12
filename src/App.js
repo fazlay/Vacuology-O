@@ -9,6 +9,8 @@ import AuthProvider from './component/contexts/AuthProvider/AuthProvider';
 import Purchase from './page/Purchase/Purchase';
 import DashBord from './page/DashBord/DashBord';
 import PrivateRoute from './component/PrivetRoute/PrivetRoute';
+import Footer from './page/Footer/Footer';
+import NotFound from './page/NotFound/NotFound';
 
 function App() {
   return (
@@ -38,7 +40,11 @@ function App() {
             <Route path='/dashbord'>
               <DashBord></DashBord>
             </Route>
+            <Route path='*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
     </div>
