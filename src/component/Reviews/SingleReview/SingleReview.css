@@ -1,11 +1,11 @@
-.tm-content {
-    background: #ebf3f5;
-    padding: 15px 20px 5px 15px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-  }
-  /* Down Arrow */
-  .tm-content:after {
+/* .tm-content {
+  background: #ebf3f5;
+  padding: 15px 20px 5px 15px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+} */
+/* Down Arrow */
+/* .tm-content:after {
     content: '';
     width: 0px;
     height: 0px;
@@ -15,42 +15,30 @@
     position: relative;
     top: 39px;
     right: 500px;
-  }
-  /* Picture, Name and Title */
-  .tm-pic {
-    margin-left: 25px;
-    margin-bottom: 80px;
-  }
-  /* Testimonial Picture */
-  .tm-pic .photo {
-    background-color: #ccc;
-    border-radius: 100px;
-  }
-  .photo {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    float: left;
-    
-    background-color: #ccc;
-    border-radius: 100px;
-  }
-  /* Name and Title Paragraph*/
-  .tm-pic p {
-    position: relative;
-    top: 5px;
-    text-transform: uppercase;
-    line-height: 30px;
-  }
-  /* Name */
-  .tm-pic p:nth-child(2) {
+  } */
+/* Picture, Name and Title */
+
+/* Testimonial Picture */
+
+/* .photo {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  float: left;
+
+  background-color: #ccc;
+  border-radius: 100px;
+} */
+/* Name and Title Paragraph*/
+
+/* Name */
+/* .tm-pic p:nth-child(2) {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 0;
   }
   /* Title */
-  .tm-pic p:nth-child(3) {
+/* .tm-pic p:nth-child(3) {
     font-size: 14px;
     color: #777;
-  }
-  
+  }  */

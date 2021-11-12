@@ -25,6 +25,7 @@ import AddProduct from './AddProduct/AddProduct';
 import { Link } from 'react-router-dom';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useAuth from '../../component/hook/useAuth';
+import AddReview from './AddReview/AddReview';
 
 const drawerWidth = 240;
 
@@ -75,7 +76,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const DashBord = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const { admin } = useAuth();
 
@@ -131,31 +132,67 @@ const DashBord = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            <Link to={`${url}/myorder`}>My Orders</Link>
-
-           
-
-            {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
+            <Link to={`${url}/myorder`}>
+              {' '}
+              <ListItem button>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <InboxIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary='My ORDER' />
               </ListItem>
-            ))} */}
+            </Link>
           </List>
-        { admin? <List>
-          <Link to={`${url}/manageorder`}>Manage Orders</Link>
-            <Link to={`${url}/addproduct`}> Add Product</Link>
-            <Link to={`${url}/makeadmin`}> Make A Admin</Link>
-          </List>:''}
+          {admin ? (
+            <List>
+              <Link to={`${url}/manageorder`}>
+                {' '}
+                <Link to={`${url}/myorder`}>
+                  {' '}
+                  <ListItem button>
+                    <ListItemIcon>
+                      <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='Mangae Order' />
+                  </ListItem>
+                </Link>
+              </Link>
+              <Link to={`${url}/addproduct`}>
+                {' '}
+                <Link to={`${url}/myorder`}>
+                  {' '}
+                  <ListItem button>
+                    <ListItemIcon>
+                      <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='ADD PRODUCT' />
+                  </ListItem>
+                </Link>
+              </Link>
+              <Link to={`${url}/makeadmin`}>
+                {' '}
+                <Link to={`${url}/myorder`}>
+                  {' '}
+                  <ListItem button>
+                    <ListItemIcon>
+                      <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='Make ADMIN' />
+                  </ListItem>
+                </Link>
+              </Link>
+            </List>
+          ) : (
+            ''
+          )}
         </Drawer>
         {/* <Main open={open}>
           <DrawerHeader />
         </Main> */}
 
         <Switch>
-          <Route exact path={path}></Route>
+          <Route exact path={`${path}/`}>
+            <AddReview></AddReview>
+          </Route>
           <Route path={`${path}/manageorder`}>
             <ManageOrder></ManageOrder>
           </Route>
