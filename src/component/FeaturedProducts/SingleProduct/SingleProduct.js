@@ -19,7 +19,7 @@ const SingleProduct = ({ product }) => {
       <Grid item xs={6} md={4}>
         <Paper elevation={0} sx={{ m: 3 }}>
           <Card sx={{ maxWidth: 345, border: 'none', boxShadow: 'none' }}>
-            <CardActionArea sx={{pb:3}}> 
+            <CardActionArea sx={{ pb: 3 }}>
               <Link to={`/products/${_id}`} style={{ textDecoration: 'none' }}>
                 <CardMedia
                   component='img'
@@ -32,14 +32,22 @@ const SingleProduct = ({ product }) => {
                   <Typography gutterBottom variant='h5' component='div'>
                     {name}
                   </Typography>
+                  <Typography variant='h6' color='text.secondary'>
+                    $ {price}
+                  </Typography>
                   <Typography variant='body2' color='text.secondary'>
                     {description.slice(0, 200)}
                   </Typography>
                 </CardContent>
               </Link>
-              <Link to={`/products/${_id}`} style={{ textDecoration: 'none' }}>
-                <Button variant='contained'>BUY NOW</Button>
-              </Link>
+              <div sx={{ mx: 'auto' }}>
+                <Link
+                  to={`/products/${_id}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Button variant='contained'>BUY NOW</Button>
+                </Link>
+              </div>
             </CardActionArea>
           </Card>
         </Paper>

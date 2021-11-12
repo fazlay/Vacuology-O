@@ -1,5 +1,5 @@
-import { Button, Container, TextField } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { Button, Container, TextField, Typography } from '@mui/material';
+import { Link, useHistory } from 'react-router-dom';
 import React from 'react';
 import useAuth from '../../component/hook/useAuth';
 
@@ -13,7 +13,6 @@ const SignUp = () => {
     const value = e.target.value;
     userInfo[field] = value;
     userInfo = { ...userInfo };
-   
   };
   const handleSubmit = (e) => {
     console.log(userInfo.name, userInfo.email, userInfo.password);
@@ -32,6 +31,7 @@ const SignUp = () => {
           variant='standard'
           name='name'
           onBlur={handleOnBlur}
+          sx={{ width: 1 }}
         />
         <TextField
           id='standard-email-input'
@@ -40,6 +40,7 @@ const SignUp = () => {
           variant='standard'
           name='email'
           onBlur={handleOnBlur}
+          sx={{ width: 1 }}
         />
         <TextField
           id='standard-password-input'
@@ -48,16 +49,18 @@ const SignUp = () => {
           variant='standard'
           name='password'
           onBlur={handleOnBlur}
+          sx={{ width: 1 , mb:3}}
         />
-        {/* <TextField
-          id='standard-password-input2'
-          label='Re-Type Password'
-          type='password'
-          variant='standard'
-          name='password2'
-         nBlur={handleOnBlur}
-        /> */}
-        <Button type='submit'>Submit</Button>
+
+        <Link to='/login' style={{ textDecoration: 'none' }}>
+          <Typography variant='p' color='blue' sx={{ fontWeight: 'bold' }}>
+            ALREADY HAVE ACCOUNT ?? LOGIN NOW
+          </Typography>
+        </Link>
+
+        <Button variant='contained' type='submit' sx={{ width: 1, my: 3 }}>
+          Submit
+        </Button>
       </form>
     </Container>
   );

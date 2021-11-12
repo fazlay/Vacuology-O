@@ -89,7 +89,7 @@ const PurchaseForm = ({ id }) => {
           defaultValue='House# 5/12, Road#3'
           onBlur={handleInfoBlur}
         />
-        <Button type='submit' varient='contained' sx={{ width: '75%' }}>
+        <Button type='submit' variant="contained" sx={{ width: '75%' }}>
           {' '}
           PLACE ORDER
         </Button>

@@ -16,8 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import Header from '../../component/Header/Header';
+
 import { Route, Switch, useRouteMatch } from 'react-router';
 import ManageOrder from './ManageOrder/ManageOrder';
 import MyOrder from './MyOrder/MyOrder';
@@ -26,6 +25,7 @@ import { Link } from 'react-router-dom';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useAuth from '../../component/hook/useAuth';
 import AddReview from './AddReview/AddReview';
+import ManageProducts from './ManageProducts/ManageProducts';
 
 const drawerWidth = 240;
 
@@ -145,9 +145,7 @@ const DashBord = () => {
           {admin ? (
             <List>
               <Link to={`${url}/manageorder`}>
-                {' '}
-                <Link to={`${url}/myorder`}>
-                  {' '}
+               
                   <ListItem button>
                     <ListItemIcon>
                       <InboxIcon />
@@ -155,30 +153,36 @@ const DashBord = () => {
                     <ListItemText primary='Mangae Order' />
                   </ListItem>
                 </Link>
-              </Link>
+             
               <Link to={`${url}/addproduct`}>
-                {' '}
-                <Link to={`${url}/myorder`}>
-                  {' '}
+              
                   <ListItem button>
                     <ListItemIcon>
                       <InboxIcon />
                     </ListItemIcon>
                     <ListItemText primary='ADD PRODUCT' />
                   </ListItem>
-                </Link>
+              
               </Link>
               <Link to={`${url}/makeadmin`}>
-                {' '}
-                <Link to={`${url}/myorder`}>
-                  {' '}
+              
                   <ListItem button>
                     <ListItemIcon>
                       <InboxIcon />
                     </ListItemIcon>
                     <ListItemText primary='Make ADMIN' />
                   </ListItem>
-                </Link>
+              
+              </Link>
+              <Link to={`${url}/manageproducts`}>
+              
+                  <ListItem button>
+                    <ListItemIcon>
+                      <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='MANAGE PRODUCTS' />
+                  </ListItem>
+              
               </Link>
             </List>
           ) : (
@@ -204,6 +208,9 @@ const DashBord = () => {
           </Route>
           <Route path={`${path}/makeadmin`}>
             <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path={`${path}/manageproducts`}>
+          <ManageProducts></ManageProducts>
           </Route>
         </Switch>
       </Box>

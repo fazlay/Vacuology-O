@@ -1,68 +1,30 @@
-import { Avatar, Container, Paper, Typography } from '@mui/material';
-import React from 'react';
-import Grid from '@mui/material/Grid';
-// import './SingleReview.css';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
-const SingleReview = () => {
+const SingleReview = ({ review }) => {
+  console.log(review);
   return (
-    <>
-      {' '}
-      <Paper sx={{ backgroundColor: 'blue' }}>
-        <Typography variant='p' component='p'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-          porro doloremque, esse mollitia hic dolorem libero, sint, quos beatae
-          voluptas rerum? Minus ullam vel perspiciatis, iusto fugiat officiis
-          laborum neque.
+    <Card sx={{ maxWidth: 345 }}>
+      <CardContent>
+        <FormatQuoteIcon />
+        <Typography variant='body2' color='text.secondary'>
+          {review.userReview}
         </Typography>
-      </Paper>
-      <Grid container spacing={2}>
-        <Grid item xs={1}>
-          <Avatar src='/broken-image.jpg' />
-        </Grid>
-        <Grid item xs={11} sx={{directio:'row',justifyContent:'flex-start'}}>
-          <Typography variant='p' component='p'>
-          Fazlay Rabbi <br />{' '}
-          <Typography variant='p' component='p' sx={{}}>
-            Regular Cutomer
-          </Typography>
-          </Typography>
-        </Grid>
-      </Grid>
-    </>
+      </CardContent>
 
-    //   <Paper>
-
-    //     <Typography variant='p' component='p' sx={{backgroundColor:'ebf3f5'}}>
-    //       Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-    //       porro doloremque, esse mollitia hic dolorem libero, sint, quos beatae
-    //       voluptas rerum? Minus ullam vel perspiciatis, iusto fugiat officiis
-    //       laborum neque.
-    //     </Typography>
-
-    //   <div>
-    //   <Avatar src="/broken-image.jpg" />
-    //     {/* <img
-    //     className='photo'
-    //     src='https://img.webnots.com/2015/08/Testimonial3.jpg'
-    //     alt=''
-    //   /> */}
-    //   <Typography
-    //     variant='p'
-    //     component='p'
-    //     sx={{ float: 'left', ml: 3, fontWeight: 'bold' }}
-    //   >
-    //     Fazlay Rabbi <br />{' '}
-    //   {/* <Typography
-    //     variant='p'
-    //     component='p'
-    //     sx={{ float: 'left', mt: 1, fontWeight: 'light' }}
-    //   >
-    //     Regular Cutomer
-    //   </Typography> */}
-    //   </Typography></div>
-
-    // </Paper>
+      <CardActions>
+        <Avatar sx={{ ml: 1 }} src='/broken-image.jpg' />
+        <Typography variant='body2' color='text.secondary' sx={{ ml: 1 }}>
+          {review.name}
+        </Typography>
+      </CardActions>
+    </Card>
   );
 };
-
 export default SingleReview;
