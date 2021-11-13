@@ -7,7 +7,7 @@ import PurchaseForm from './PurchaseForm/PurchaseForm';
 const Purchase = () => {
   const [selectedProduct, setSelectedProduct] = useState({});
   const { id } = useParams();
-  const url = `http://localhost:5000/products/${id}`;
+  const url = `https://fathomless-sands-30445.herokuapp.com/products/${id}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -22,7 +22,7 @@ const Purchase = () => {
           <Productdes selectedProduct={selectedProduct}></Productdes>
         </Grid>
         <Grid item xs={6} md={4}>
-          <PurchaseForm id={id}></PurchaseForm>
+          <PurchaseForm   id={id}></PurchaseForm>
         </Grid>
       </Grid>
     </>

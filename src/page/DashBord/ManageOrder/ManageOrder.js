@@ -7,36 +7,45 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, IconButton } from '@mui/material';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+import { Alert, Button, IconButton, Snackbar } from '@mui/material';
 
 const ManageOrder = () => {
   const [orders, setOrders] = useState([]);
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [approveSuccess, setApproveSuccess] = useState(false);
   useEffect(() => {
-    fetch('http://localhost:5000/orders')
+    fetch('https://fathomless-sands-30445.herokuapp.com/orders')
       .then((res) => res.json())
-      .then((data) => setOrders(data));
-  }, []);
+      .then((data) => {
+        setOrders(data);
+      });
+  }, [orders]);
   const handleApprove = (id) => {
     const updateStatus = { status: 'approved' };
-    const orderurl = `http://localhost:5000/orders/${id}`;
+    const orderurl = `https://fathomless-sands-30445.herokuapp.com/orders/${id}`;
     fetch(orderurl, {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(updateStatus),
-    });
-  };
-  const handleDelete = (id) => {
-    const orderurl = `http://localhost:5000/orders/${id}`;
-    fetch(orderurl, {
-      method: 'DELETE'
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        setApproveSuccess(data.acknowledged);
+        setDeleteSuccess(false);
+      });
   };
+  const handleDelete = (id) => {
+    const orderurl = `https://fathomless-sands-30445.herokuapp.com/orders/${id}`;
+    fetch(orderurl, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setDeleteSuccess(data.acknowledged);
+        setApproveSuccess(false);
+      });
+  };
+ 
 
   return (
     <>
@@ -45,9 +54,12 @@ const ManageOrder = () => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell align='right'>Product Name</TableCell>
-              <TableCell align='right'>Price</TableCell>
-              <TableCell align='right'>Status</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell align='center'>Product ID</TableCell>
+            
+              <TableCell align='center'>Status</TableCell>
+              <TableCell align='center'>Manage</TableCell>
+              <TableCell align='center'>DELETE</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -57,13 +69,16 @@ const ManageOrder = () => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component='th' scope='row'>
+                  {order.name}
+                </TableCell>
+                <TableCell component='th' scope='row'>
                   {order.email}
                 </TableCell>
 
-                <TableCell align='right'>{order.productId}</TableCell>
-                <TableCell align='right'>{order.status}</TableCell>
+                <TableCell align='center'>{order.productId}</TableCell>
+                <TableCell align='center'>{order.status}</TableCell>
 
-                <TableCell align='right'>
+                <TableCell align='center'>
                   {order.status === 'pending' ? (
                     <>
                       {' '}
@@ -82,7 +97,7 @@ const ManageOrder = () => {
                     </Button>
                   )}
                 </TableCell>
-                <TableCell align='right'>
+                <TableCell align='center'>
                   <IconButton aria-label='delete' size='large'>
                     <DeleteIcon
                       onClick={() => {
@@ -96,7 +111,17 @@ const ManageOrder = () => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer> 
+      </TableContainer>
+      <Snackbar open={deleteSuccess} anchorOrigin={{  vertical: 'bottom', horizontal: 'center' }} autoHideDuration={6000}>
+        <Alert severity='error' sx={{ width: '100%' }}>
+          Deleted sucessfully
+        </Alert>
+      </Snackbar>
+      <Snackbar open={approveSuccess} anchorOrigin={{ vertical: 'bottom', horizontal: 'center'  }} autoHideDuration={600}>
+        <Alert severity='error' sx={{ width: '100%' }}>
+          Approved sucessfully
+        </Alert>
+      </Snackbar>
     </>
   );
 };

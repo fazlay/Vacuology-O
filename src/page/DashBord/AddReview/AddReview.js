@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import useAuth from '../../../component/hook/useAuth';
@@ -13,7 +13,8 @@ const AddReview = () => {
     userReview: 'VacuoloGu Is Qwsome',
   };
   const [userReview, setUserReview] = useState('');
-  const [rating, setRating] = useState(6);
+  const [rating, setRating] = useState(0);
+  const [reviewSuccess, setReviewSuccess] = useState(false);
 
   const handleBlur = (e) => {
     const field = e.target.name;
@@ -23,6 +24,8 @@ const AddReview = () => {
     newReview[field] = value;
     setUserReview(newReview);
   };
+
+ 
   const handleSubmit = (e) => {
     // const withStar= {...userReview,rating}
     // setUserReview(withStar)
@@ -30,13 +33,15 @@ const AddReview = () => {
     e.preventDefault();
     // const review = { userReview };
 
-    fetch('http://localhost:5000/review', {
+    fetch('https://fathomless-sands-30445.herokuapp.com/review', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(userReview),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setReviewSuccess(data.acknowledged));
+
+    e.target.reset();
   };
   return (
     <div>
@@ -48,6 +53,7 @@ const AddReview = () => {
           aria-label='minimum height'
           minRows={3}
           placeholder='Express your Fellings about VACUOLOGY'
+      
           name='userReview'
           onBlur={handleBlur}
           style={{ width: 400 }}
@@ -64,12 +70,16 @@ const AddReview = () => {
             const withStar = { ...userReview, rating };
             setUserReview(withStar);
           }}
+        
         />
 
         <Button sx={{ width: '75%', my: 5 }} type='submit' variant='contained'>
           ADD YOUR REVIEW
         </Button>
       </form>
+      {reviewSuccess && (
+        <Alert severity='success'>Review Added successfully!</Alert>
+      )}
     </div>
   );
 };

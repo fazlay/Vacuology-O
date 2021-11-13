@@ -1,4 +1,4 @@
-import { Button, Container, TextField } from '@mui/material';
+import { Alert, Button, Container, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 const AddProduct = () => {
@@ -9,7 +9,7 @@ const AddProduct = () => {
     price: 50,
     img: 'https://www.irobot.cz/app/uploads/2019/10/i7_charcoal_photo_studio_frontstanding_hero-700x700-c-default.png',
   };
-  const [purchaseSuccess, setPurchaseSuccess] = useState(false);
+  const [addProductSuccess, setAddProductSuccess] = useState(false);
   const [newProduct, setNewProduct] = useState(productDetails);
 
   const handleInfoBlur = (e) => {
@@ -25,17 +25,17 @@ const AddProduct = () => {
     e.preventDefault();
     console.log(newProduct);
 
-    fetch('http://localhost:5000/products', {
+    fetch('https://fathomless-sands-30445.herokuapp.com/products', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newProduct),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setAddProductSuccess(data.acknowledged));
   };
   return (
     <div>
-      <Container sx={{ml:5}}>
+      <Container sx={{ ml: 5 }}>
         <form onSubmit={handleProductSubmit}>
           <TextField
             sx={{ width: '75%', my: 2 }}
@@ -48,7 +48,7 @@ const AddProduct = () => {
           <TextField
             sx={{ width: '75%', my: 2 }}
             name='description'
-            defaultValue='Neatsvor X600 4000pa'
+            defaultValue='This Vacuam Cleaner is an innovative brand. We focus on robotic vacuum cleaners and other smart appliances, helping people enjoy their lives. Were committed to creating great products to engage our loyal customers around the'
             label='Description'
             variant='standard'
             onBlur={handleInfoBlur}
@@ -56,7 +56,7 @@ const AddProduct = () => {
           <TextField
             sx={{ width: '75%', my: 2 }}
             name='price'
-            defaultValue='Neatsvor X600 4000pa'
+            defaultValue='450'
             label='Price'
             variant='standard'
             onBlur={handleInfoBlur}
@@ -70,10 +70,13 @@ const AddProduct = () => {
             onBlur={handleInfoBlur}
           />
 
-          <Button type='submit' variant="contained" sx={{ width: '75%' }}>
+          <Button type='submit' variant='contained' sx={{ width: '75%' }}>
             ADD PRODUCT
           </Button>
         </form>
+        {addProductSuccess && (
+          <Alert severity='success'>Product Added successfully!</Alert>
+        )}
       </Container>
     </div>
   );

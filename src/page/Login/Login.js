@@ -1,4 +1,4 @@
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, Container, TextField, Typography } from '@mui/material';
 
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
@@ -7,7 +7,7 @@ import useAuth from '../../component/hook/useAuth';
 
 const Login = () => {
   let userInfo = { email: '', password: '' };
-  const { loginUser } = useAuth();
+  const { loginUser,isLoading,authError,user } = useAuth();
   const location = useLocation();
   const history = useHistory();
 
@@ -26,7 +26,7 @@ const Login = () => {
   };
   return (
     <Container sx={{ width: '25%' }}>
-      <h2>This is Login</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <TextField
           id='standard-email-input'
@@ -59,6 +59,9 @@ const Login = () => {
           LOGIN
         </Button>
       </form>
+      {isLoading && <CircularProgress />}
+      {user?.email && <Alert severity='success'>Login successfully!</Alert>}
+      {authError && <Alert severity='error'>{authError}</Alert>}
     </Container>
   );
 };

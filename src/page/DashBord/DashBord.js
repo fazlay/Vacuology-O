@@ -26,6 +26,7 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useAuth from '../../component/hook/useAuth';
 import AddReview from './AddReview/AddReview';
 import ManageProducts from './ManageProducts/ManageProducts';
+import { Button } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -76,9 +77,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const DashBord = () => {
   const theme = useTheme();
+
   const [open, setOpen] = React.useState(true);
 
-  const { admin } = useAuth();
+  const { admin, logOut } = useAuth();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -148,6 +150,14 @@ const DashBord = () => {
                 <ListItemText primary='My ORDER' />
               </ListItem>
             </Link>
+            
+              <ListItem button>
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <Button onClick={logOut}>LOGOUT</Button>
+              </ListItem>
+         
           </List>
           {admin ? (
             <List>

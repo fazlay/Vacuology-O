@@ -2,11 +2,14 @@ import { Alert, Button, Container, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import useAuth from '../../../component/hook/useAuth';
 
-const PurchaseForm = ({ id }) => {
+const PurchaseForm = ({id}) => {
+
   const { user } = useAuth();
+
   const orderDetails = {
     productId: id,
-    name: user.name,
+  
+    userName: user.displayName,
     email: user.email,
     mobile: '017121212',
     country: 'Bangladesh',
@@ -28,8 +31,8 @@ const PurchaseForm = ({ id }) => {
   };
   const handlePurchaseSubmit = (e) => {
     e.preventDefault();
-    console.log('inside function');
-    fetch('http://localhost:5000/orders', {
+    console.log(orderinfo);
+    fetch('https://fathomless-sands-30445.herokuapp.com/orders', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(orderinfo),
@@ -43,7 +46,7 @@ const PurchaseForm = ({ id }) => {
         <TextField
           sx={{ width: '75%', my: 2 }}
           name='name'
-          defaultValue={user.name}
+          defaultValue={user.displayName}
           label='Name'
           variant='standard'
           onBlur={handleInfoBlur}
@@ -57,6 +60,7 @@ const PurchaseForm = ({ id }) => {
           variant='standard'
           onBlur={handleInfoBlur}
         />
+       
         <TextField
           sx={{ width: '75%', my: 2 }}
           name='mobile'
@@ -89,7 +93,7 @@ const PurchaseForm = ({ id }) => {
           defaultValue='House# 5/12, Road#3'
           onBlur={handleInfoBlur}
         />
-        <Button type='submit' variant="contained" sx={{ width: '75%' }}>
+        <Button type='submit' variant='contained' sx={{ width: '75%' }}>
           {' '}
           PLACE ORDER
         </Button>

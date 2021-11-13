@@ -13,14 +13,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const MyOrder = () => {
   const { user } = useAuth();
   const [userOrder, setUserOrder] = useState([]);
-  const orderUrl = `http://localhost:5000/orders/${user.email}`;
+  const orderUrl = `https://fathomless-sands-30445.herokuapp.com/orders/${user.email}`;
   useEffect(() => {
     fetch(orderUrl)
       .then((res) => res.json())
       .then((data) => setUserOrder(data));
   }, [userOrder]);
   const handleDelete = (id) => {
-    const orderurl = `http://localhost:5000/orders/${id}`;
+    const orderurl = `https://fathomless-sands-30445.herokuapp.com/orders/${id}`;
     fetch(orderurl, {
       method: 'DELETE',
     })
@@ -35,9 +35,11 @@ const MyOrder = () => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell align='right'>Product Name</TableCell>
-              <TableCell align='right'>Price</TableCell>
-              <TableCell align='right'>Status</TableCell>
+              <TableCell align='center'>Product Id</TableCell>
+            
+              <TableCell align='center'>Status</TableCell>
+              <TableCell align='center'>Approve/Pending</TableCell>
+              <TableCell align='center'>Manage</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -47,11 +49,13 @@ const MyOrder = () => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component='th' scope='row'>
-                  {order.email}
+                  {order.name}
                 </TableCell>
-                <TableCell align='right'>{order.productId}</TableCell>
-                <TableCell align='right'>{order.status}</TableCell>
-                <TableCell align='right'>
+                
+                <TableCell align='center'>{order.productId}</TableCell>
+            
+                <TableCell align='center'>{order.status}</TableCell>
+                <TableCell align='center'>
                   {order.status !== 'pending' ? (
                     <Button variant='contained' color='success'>
                       Appropved
@@ -62,7 +66,7 @@ const MyOrder = () => {
                     </Button>
                   )}
                 </TableCell>
-                <TableCell align='right'>
+                <TableCell align='center'>
                   <IconButton aria-label='delete' size='large'>
                     <DeleteIcon
                       onClick={() => {

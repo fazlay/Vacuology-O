@@ -1,26 +1,28 @@
-import { Button, TextField } from '@mui/material';
+import { Alert, Button, Container, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 const MakeAdmin = () => {
   const [adminMail, setAdminMail] = useState('');
+  const [makeAdminSucess, setMakeAdminSucess] = useState(false);
 
   const handleBlur = (e) => {
-    
     setAdminMail(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user={adminMail}
+    const user = { adminMail };
     console.log(user);
-    fetch('http://localhost:5000/user/admin', {
+    fetch('https://fathomless-sands-30445.herokuapp.com/user/admin', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(user),
-    }).then();
+    })
+      .then((res) => res.json())
+      .then((data) => setMakeAdminSucess(data.acknowledged));
   };
 
   return (
-    <>
+    <Container>
       <form onSubmit={handleSubmit}>
         <TextField
           id='standard-password-input'
@@ -29,15 +31,22 @@ const MakeAdmin = () => {
           name='email'
           autoComplete='current-password'
           variant='standard'
-          sx={{ width: '100%', mt: 10 }}
+          sx={{ width: '100%', mt: 10, display: 'block' }}
           onBlur={handleBlur}
         />
-        <Button sx={{ width: '75%', my: 5 }} type='submit' variant='contained'>
+        <Button
+          sx={{ width: '25%', my: 5, display: 'block' }}
+          type='submit'
+          variant='contained'
+        >
           {' '}
           MAKE ADMIN
         </Button>
       </form>
-    </>
+      {makeAdminSucess && (
+        <Alert severity='success'>Make Admin successfully!</Alert>
+      )}
+    </Container>
   );
 };
 

@@ -76,6 +76,7 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        setAuthError('');
       })
       .catch((error) => {
         // An error happened.
@@ -83,7 +84,7 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
   //admin checking ---------------------------------
-  const adminUrl = `http://localhost:5000/user/${user?.email}`;
+  const adminUrl = `https://fathomless-sands-30445.herokuapp.com/user/${user?.email}`;
 
   useEffect(() => {
     fetch(adminUrl)
@@ -98,7 +99,7 @@ const useFirebase = () => {
   const saveUser = (displayName, email, method) => {
     const user = { displayName, email };
     console.log(user);
-    fetch('http://localhost:5000/user', {
+    fetch('https://fathomless-sands-30445.herokuapp.com/user', {
       method: method,
       headers: {
         'content-type': 'application/json',
