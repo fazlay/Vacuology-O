@@ -8,8 +8,8 @@
 
 ## Features
 
-- Signup with email /password & Login with Google
-- Privet Menu - user cant see some features/menu without login .
+- Signup with email /password & Login.
+- Privet Menu - user can't see some features/menu without login .
 - Products and Product details shown in diffrent pages.
 - Featured product are show in diffrent page
 - User can Purchase fany type of vaccume cleaner.
