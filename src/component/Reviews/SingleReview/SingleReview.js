@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import Rating from 'react-rating';
 
 const SingleReview = ({ review }) => {
   console.log(review);
@@ -16,6 +17,16 @@ const SingleReview = ({ review }) => {
         <Typography variant='body2' color='text.secondary'>
           {review.userReview}
         </Typography>
+        <Rating
+        color='golden'
+          className='rating'
+          name='rating'
+          size={36}
+          fullSymbol='fas fa-star'
+          emptySymbol='far fa-star'
+          initialRating={review.rating}
+          readonly
+        />
       </CardContent>
 
       <CardActions>

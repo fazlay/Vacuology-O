@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Container, Divider, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import SingleReview from './SingleReview/SingleReview';
 
@@ -11,9 +11,13 @@ const Reviews = () => {
   }, []);
   return (
     <Container>
-    <Grid container spacing={2}>
+      <Typography gutterBottom variant='h3' component='div' sx={{fontWeight:'bold' ,pt:5, textAlign:'center'}}>
+                What Our Customer says!!
+                  </Typography>
+                  <Divider variant="middle" />
+    <Grid container spacing={2} sx={{pt:5}}>
       {reviews.map((review) => (
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={3}>
           <SingleReview key={review._id} review={review}></SingleReview>
         </Grid>
       ))}

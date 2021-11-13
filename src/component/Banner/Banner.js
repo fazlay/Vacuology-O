@@ -7,10 +7,10 @@ const Banner = () => {
   return (
     <>
       <Grid container spacing={2} className='bannerImage'>
-        <Grid item xs={5}>
+        <Grid item xs={12} sm={5}>
           
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={7}>
           <Typography variant='h2' component='h2' sx={{fontWeight: 'bold' ,mt:20}}>
             Precision. Power. Convinience{' '}
           </Typography>

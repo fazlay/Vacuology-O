@@ -16,15 +16,17 @@ const SingleProduct = ({ product }) => {
   const { name, description, img, price, _id } = product;
   return (
     <>
-      <Grid item xs={6} md={4}>
+      <Grid item xs={12} sm={4}>
         <Paper elevation={0} sx={{ m: 3 }}>
           <Card sx={{ maxWidth: 345, border: 'none', boxShadow: 'none' }}>
             <CardActionArea sx={{ pb: 3 }}>
               <Link to={`/products/${_id}`} style={{ textDecoration: 'none' }}>
                 <CardMedia
+                sx={{mx:"auto", width:'50%'}}
                   component='img'
-                  height='340'
-                  width='10'
+                  height='auto'
+                 
+                  padding="5"
                   image={img}
                   alt='green iguana'
                 />

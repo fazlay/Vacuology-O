@@ -46,11 +46,11 @@ const Login = () => {
           autoComplete='current-password'
           variant='standard'
           onChange={handleChange}
-          sx={{ width: 1, mb:5 }}
+          sx={{ width: 1, mb: 5 }}
         />
 
-        <Link to='/signup' style={{ textDecoration: 'none'}}>
-          <Typography variant='p' color='blue' sx={{ fontWeight: 'bold'  }}>
+        <Link to='/signup' style={{ textDecoration: 'none' }}>
+          <Typography variant='p' color='blue' sx={{ fontWeight: 'bold' }}>
             DO NOT HAVE ACCOUNT ?? REGISTER NOW
           </Typography>
         </Link>

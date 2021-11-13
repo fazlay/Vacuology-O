@@ -37,9 +37,9 @@ function App() {
             <Route path='/products/:id'>
               <Purchase></Purchase>
             </Route>
-            <Route path='/dashbord'>
+            <PrivateRoute path='/dashbord'>
               <DashBord></DashBord>
-            </Route>
+            </PrivateRoute>
             <Route path='*'>
               <NotFound></NotFound>
             </Route>
@@ -51,4 +51,5 @@ function App() {
   );
 }
 
+//https://fathomless-sands-30445.herokuapp.com/
 export default App;

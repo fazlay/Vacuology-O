@@ -104,7 +104,7 @@ const DashBord = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant='h6' noWrap component='div'>
-              Persistent drawer
+              Vacuology DASHBOORD
             </Typography>
           </Toolbar>
         </AppBar>
@@ -132,8 +132,15 @@ const DashBord = () => {
           </DrawerHeader>
           <Divider />
           <List>
+            <Link to='/'>
+              <ListItem button>
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary='HOME' />
+              </ListItem>
+            </Link>
             <Link to={`${url}/myorder`}>
-              {' '}
               <ListItem button>
                 <ListItemIcon>
                   <InboxIcon />
@@ -145,44 +152,37 @@ const DashBord = () => {
           {admin ? (
             <List>
               <Link to={`${url}/manageorder`}>
-               
-                  <ListItem button>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Mangae Order' />
-                  </ListItem>
-                </Link>
-             
+                <ListItem button>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Mangae Order' />
+                </ListItem>
+              </Link>
+
               <Link to={`${url}/addproduct`}>
-              
-                  <ListItem button>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='ADD PRODUCT' />
-                  </ListItem>
-              
+                <ListItem button>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='ADD PRODUCT' />
+                </ListItem>
               </Link>
               <Link to={`${url}/makeadmin`}>
-              
-                  <ListItem button>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Make ADMIN' />
-                  </ListItem>
-              
+                <ListItem button>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Make ADMIN' />
+                </ListItem>
               </Link>
               <Link to={`${url}/manageproducts`}>
-              
-                  <ListItem button>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='MANAGE PRODUCTS' />
-                  </ListItem>
-              
+                <ListItem button>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='MANAGE PRODUCTS' />
+                </ListItem>
               </Link>
             </List>
           ) : (
@@ -210,7 +210,7 @@ const DashBord = () => {
             <MakeAdmin></MakeAdmin>
           </Route>
           <Route path={`${path}/manageproducts`}>
-          <ManageProducts></ManageProducts>
+            <ManageProducts></ManageProducts>
           </Route>
         </Switch>
       </Box>
