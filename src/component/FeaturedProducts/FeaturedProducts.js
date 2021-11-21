@@ -15,7 +15,7 @@ const FeaturedProducts = () => {
   return (
     <Container>
       <Typography gutterBottom variant='h3' component='div' sx={{fontWeight:'bold' ,pt:5, textAlign:'center'}}>
-                   Our Products
+                   Our Available Products
                   </Typography>
                   <Divider variant="middle" />
       <Grid container spacing={2}>
