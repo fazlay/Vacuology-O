@@ -1,5 +1,6 @@
 /* .App {
-  text-align: center;
+   position: relative;
+ min-height: 100vh
 }
 
 .App-logo {
@@ -40,3 +41,22 @@
 /* .footer {
  
 } */
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+ .App {
+   position: relative;
+ min-height: 100vh
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  
+  
+}

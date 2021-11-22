@@ -8,7 +8,7 @@ const Footer = () => {
 
 
   return (
-    <div sx={{ backgroundColor: 'black'}} >
+    <div  className="footer" sx={{ backgroundColor: 'black'}} >
       <Typography variant='p' sx={{ backgroundColor: 'black',color:'white', height:50}} component='p'>
         @Copy Right 2021
       </Typography>

@@ -15,7 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { blueGrey } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { Route, Switch, useRouteMatch } from 'react-router';
@@ -122,8 +122,8 @@ const DashBord = () => {
             '& .MuiDrawer-paper': {
               width: drawerWidth,
               boxSizing: 'border-box',
-              background:blueGrey[900],
-              color: blueGrey[50] 
+              background:deepPurple[900],
+              color: deepPurple[50] 
             },
           }}
           variant='persistent'
@@ -141,62 +141,62 @@ const DashBord = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            <Link to='/' style={{ color: 'white',  textDecoration: 'none',}}>
+            <Link to='/' style={{ color: 'white',  textDecoration: 'none'}}>
               <ListItem >
                 <ListItemIcon>
-                  <HomeIcon  sx={{ color: blueGrey[50] }}/>
+                  <HomeIcon  sx={{ color: deepPurple[50] }}/>
                 </ListItemIcon>
                 <ListItemText primary='HOME'  />
               </ListItem>
             </Link>
-            <Link to={`${url}/myorder`} style={{ color: 'black',  textDecoration: 'none',}} >
+            <Link to={`${url}/myorder`} style={{ color: 'white',  textDecoration: 'none'}} >
               <ListItemButton >
                 <ListItemIcon>
-                  <ShoppingCartIcon  sx={{ color: blueGrey[50] }} />
+                  <ShoppingCartIcon  sx={{ color: deepPurple[50] }} />
                 </ListItemIcon>
                 <ListItemText primary='My Order' />
               </ListItemButton>
             </Link>
             
-              <ListItem  style={{ color: 'black',  textDecoration: 'none',}}>
+              <ListItem  style={{ color: 'white',  textDecoration: 'none'}}>
                 <ListItemIcon>
-                  <LogoutIcon  sx={{ color: blueGrey[50] }} />
+                  <LogoutIcon  sx={{ color: deepPurple[50] }} />
                 </ListItemIcon>
-                <Button onClick={logOut}>LOGOUT</Button>
+                <Button sx={{ color: deepPurple[50] }} onClick={logOut}>LOGOUT</Button>
               </ListItem>
          
           </List>
           {admin ? (
             <List>
-              <Link to={`${url}/manageorder`} style={{ color: 'black',  textDecoration: 'none',}}>
+              <Link to={`${url}/manageorder`} style={{ color: 'white',  textDecoration: 'none'}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <ShoppingCartIcon  sx={{ color: blueGrey[50] }}/>
+                    <ShoppingCartIcon  sx={{ color: deepPurple[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='Mangae Order' />
                 </ListItem>
               </Link>
 
-              <Link to={`${url}/addproduct`} style={{ color: 'black',  textDecoration: 'none',}}>
+              <Link to={`${url}/addproduct`} style={{ color: 'white',  textDecoration: 'none'}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <AddCircleIcon  sx={{ color: blueGrey[50] }}/>
+                    <AddCircleIcon  sx={{ color: deepPurple[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='ADD PRODUCT' />
                 </ListItem>
               </Link>
-              <Link to={`${url}/makeadmin`} style={{ color: 'black',  textDecoration: 'none',}}>
+              <Link to={`${url}/makeadmin`} style={{ color: 'white',  textDecoration: 'none'}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <SupervisorAccountIcon  sx={{ color: blueGrey[50] }}/>
+                    <SupervisorAccountIcon  sx={{ color: deepPurple[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='Make ADMIN' />
                 </ListItem>
               </Link>
-              <Link to={`${url}/manageproducts`} style={{ color: 'black',  textDecoration: 'none',}}>
+              <Link to={`${url}/manageproducts`} style={{ color: 'white',  textDecoration: 'none'}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <ShoppingCartIcon />
+                    <ShoppingCartIcon sx={{ color: deepPurple[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='MANAGE PRODUCTS' />
                 </ListItem>
