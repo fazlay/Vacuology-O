@@ -122,7 +122,8 @@ const DashBord = () => {
             '& .MuiDrawer-paper': {
               width: drawerWidth,
               boxSizing: 'border-box',
-              background:'blueGrey[900]'
+              background:blueGrey[900],
+              color: blueGrey[50] 
             },
           }}
           variant='persistent'
@@ -170,7 +171,7 @@ const DashBord = () => {
               <Link to={`${url}/manageorder`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <ShoppingCartIcon />
+                    <ShoppingCartIcon  sx={{ color: blueGrey[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='Mangae Order' />
                 </ListItem>
@@ -179,7 +180,7 @@ const DashBord = () => {
               <Link to={`${url}/addproduct`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <AddCircleIcon />
+                    <AddCircleIcon  sx={{ color: blueGrey[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='ADD PRODUCT' />
                 </ListItem>
@@ -187,7 +188,7 @@ const DashBord = () => {
               <Link to={`${url}/makeadmin`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <SupervisorAccountIcon />
+                    <SupervisorAccountIcon  sx={{ color: blueGrey[50] }}/>
                   </ListItemIcon>
                   <ListItemText primary='Make ADMIN' />
                 </ListItem>
