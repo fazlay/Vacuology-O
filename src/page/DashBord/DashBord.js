@@ -122,7 +122,7 @@ const DashBord = () => {
             '& .MuiDrawer-paper': {
               width: drawerWidth,
               boxSizing: 'border-box',
-              background:'#686869'
+              background:'blueGrey[900]'
             },
           }}
           variant='persistent'
@@ -151,7 +151,7 @@ const DashBord = () => {
             <Link to={`${url}/myorder`} style={{ color: 'black',  textDecoration: 'none',}} >
               <ListItemButton >
                 <ListItemIcon>
-                  <ShoppingCartIcon />
+                  <ShoppingCartIcon  sx={{ color: blueGrey[50] }} />
                 </ListItemIcon>
                 <ListItemText primary='My Order' />
               </ListItemButton>
@@ -159,7 +159,7 @@ const DashBord = () => {
             
               <ListItem  style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItemIcon>
-                  <LogoutIcon />
+                  <LogoutIcon  sx={{ color: blueGrey[50] }} />
                 </ListItemIcon>
                 <Button onClick={logOut}>LOGOUT</Button>
               </ListItem>
