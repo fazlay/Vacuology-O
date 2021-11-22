@@ -1,14 +1,17 @@
-import { Alert, Button, Container, TextField } from '@mui/material';
+import { Alert, Button, CircularProgress, Container, TextField } from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import useAuth from '../../../component/hook/useAuth';
 
-const PurchaseForm = ({id}) => {
+const PurchaseForm = ({id, selectedProduct}) => {
 
+ 
   const { user } = useAuth();
 
   const orderDetails = {
     productId: id,
-  
+    productName:selectedProduct.name,
+    productPrice:selectedProduct.price,
     userName: user.displayName,
     email: user.email,
     mobile: '017121212',
@@ -40,6 +43,9 @@ const PurchaseForm = ({id}) => {
       .then((res) => res.json())
       .then((data) => setPurchaseSuccess(data.acknowledged));
   };
+//   if (!selectedProduct) return ( 
+//   <CircularProgress />
+// );
   return (
     <Container>
       <form onSubmit={handlePurchaseSubmit}>

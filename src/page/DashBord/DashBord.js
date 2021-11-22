@@ -15,7 +15,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { blueGrey } from '@mui/material/colors';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { Route, Switch, useRouteMatch } from 'react-router';
 import ManageOrder from './ManageOrder/ManageOrder';
@@ -26,7 +27,11 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useAuth from '../../component/hook/useAuth';
 import AddReview from './AddReview/AddReview';
 import ManageProducts from './ManageProducts/ManageProducts';
-import { Button } from '@mui/material';
+import { Button, ListItemButton } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -94,7 +99,7 @@ const DashBord = () => {
     <>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position='fixed' open={open}>
+        <AppBar position='fixed' open={open}  >
           <Toolbar>
             <IconButton
               color='inherit'
@@ -117,6 +122,7 @@ const DashBord = () => {
             '& .MuiDrawer-paper': {
               width: drawerWidth,
               boxSizing: 'border-box',
+              background:'#686869'
             },
           }}
           variant='persistent'
@@ -134,26 +140,26 @@ const DashBord = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            <Link to='/'>
-              <ListItem button>
+            <Link to='/' style={{ color: 'white',  textDecoration: 'none',}}>
+              <ListItem >
                 <ListItemIcon>
-                  <InboxIcon />
+                  <HomeIcon  sx={{ color: blueGrey[50] }}/>
                 </ListItemIcon>
-                <ListItemText primary='HOME' />
+                <ListItemText primary='HOME'  />
               </ListItem>
             </Link>
-            <Link to={`${url}/myorder`}>
-              <ListItem button>
+            <Link to={`${url}/myorder`} style={{ color: 'black',  textDecoration: 'none',}} >
+              <ListItemButton >
                 <ListItemIcon>
-                  <InboxIcon />
+                  <ShoppingCartIcon />
                 </ListItemIcon>
-                <ListItemText primary='My ORDER' />
-              </ListItem>
+                <ListItemText primary='My Order' />
+              </ListItemButton>
             </Link>
             
-              <ListItem button>
+              <ListItem  style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItemIcon>
-                  <InboxIcon />
+                  <LogoutIcon />
                 </ListItemIcon>
                 <Button onClick={logOut}>LOGOUT</Button>
               </ListItem>
@@ -161,35 +167,35 @@ const DashBord = () => {
           </List>
           {admin ? (
             <List>
-              <Link to={`${url}/manageorder`}>
+              <Link to={`${url}/manageorder`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <InboxIcon />
+                    <ShoppingCartIcon />
                   </ListItemIcon>
                   <ListItemText primary='Mangae Order' />
                 </ListItem>
               </Link>
 
-              <Link to={`${url}/addproduct`}>
+              <Link to={`${url}/addproduct`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <InboxIcon />
+                    <AddCircleIcon />
                   </ListItemIcon>
                   <ListItemText primary='ADD PRODUCT' />
                 </ListItem>
               </Link>
-              <Link to={`${url}/makeadmin`}>
+              <Link to={`${url}/makeadmin`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <InboxIcon />
+                    <SupervisorAccountIcon />
                   </ListItemIcon>
                   <ListItemText primary='Make ADMIN' />
                 </ListItem>
               </Link>
-              <Link to={`${url}/manageproducts`}>
+              <Link to={`${url}/manageproducts`} style={{ color: 'black',  textDecoration: 'none',}}>
                 <ListItem button>
                   <ListItemIcon>
-                    <InboxIcon />
+                    <ShoppingCartIcon />
                   </ListItemIcon>
                   <ListItemText primary='MANAGE PRODUCTS' />
                 </ListItem>

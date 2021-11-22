@@ -9,6 +9,8 @@ import Paper from '@mui/material/Paper';
 import useAuth from '../../../component/hook/useAuth';
 import { Button, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
 
 const MyOrder = () => {
   const { user } = useAuth();
@@ -35,7 +37,8 @@ const MyOrder = () => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell align='center'>Product Id</TableCell>
+              <TableCell align='center'>Product Name</TableCell>
+              <TableCell align='center'>Product Price</TableCell>
             
               <TableCell align='center'>Status</TableCell>
               <TableCell align='center'>Approve/Pending</TableCell>
@@ -52,16 +55,17 @@ const MyOrder = () => {
                   {order.name}
                 </TableCell>
                 
-                <TableCell align='center'>{order.productId}</TableCell>
+                <TableCell align='center'>{order?.productName?.slice(0,10)}</TableCell>
+                <TableCell align='center'> $ {order?.productPrice}</TableCell>
             
                 <TableCell align='center'>{order.status}</TableCell>
                 <TableCell align='center'>
                   {order.status !== 'pending' ? (
-                    <Button variant='contained' color='success'>
+                    <Button variant="outlined" color='success' startIcon={<AddTaskIcon  color="success"/>}>
                       Appropved
                     </Button>
                   ) : (
-                    <Button variant='outlined' color='error'>
+                    <Button variant='outlined' color='error'  startIcon={<PendingActionsIcon/>}>
                       Pending
                     </Button>
                   )}

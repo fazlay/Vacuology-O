@@ -9,7 +9,7 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import Rating from 'react-rating';
 
 const SingleReview = ({ review }) => {
-  console.log(review);
+ 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
