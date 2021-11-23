@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <FeaturedProducts></FeaturedProducts>
-      <Reviews></Reviews>
+      <Reviews sx={{height:'100px'}}></Reviews>
       <WhyUs></WhyUs>
     </div>
   );
