@@ -8,11 +8,27 @@ const Footer = () => {
 
 
   return (
-    <div  className="footer" sx={{ backgroundColor: 'black'}} >
-      <Typography variant='p' sx={{ backgroundColor: 'black',color:'white', height:50}} component='p'>
-        @Copy Right 2021
-      </Typography>
-    </div>
+    <Container className="footer"  >
+
+    <Grid container spacing={2}>
+     <Grid item sm={6} md={12}>
+     <Typography variant='p' >
+           @Copy Right 2021
+         </Typography>
+     </Grid>
+     <Grid item sm={6} md={12}>
+     <Typography variant='p' >
+           @Copy Right 2021
+         </Typography>
+     </Grid>
+     <Grid item sm={6} md={12}>
+     <Typography variant='p' >
+           @Copy Right 2021
+         </Typography>
+     </Grid>
+   </Grid>
+        
+       </Container>
   );
 };
 
