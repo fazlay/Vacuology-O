@@ -1,13 +1,24 @@
-import { Alert, Button, CircularProgress, Container, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  Container,
+  Divider,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import GoogleIcon from "@mui/icons-material/Google";
 
-import React from 'react';
-import { useHistory, useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
-import useAuth from '../../component/hook/useAuth';
+import React from "react";
+import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import useAuth from "../../component/hook/useAuth";
 
 const Login = () => {
-  let userInfo = { email: '', password: '' };
-  const { loginUser,isLoading,authError,user } = useAuth();
+  let userInfo = { email: "", password: "" };
+  const { loginUser, isLoading, authError, user } = useAuth();
   const location = useLocation();
   const history = useHistory();
 
@@ -25,43 +36,73 @@ const Login = () => {
     e.preventDefault();
   };
   return (
-    <Container sx={{ width: '25%' }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          id='standard-email-input'
-          label='Email'
-          type='email'
-          name='email'
-          autoComplete='current-email'
-          variant='standard'
-          onChange={handleChange}
-          sx={{ width: 1 }}
-        />
-        <TextField
-          id='standard-password-input'
-          label='Password'
-          type='password'
-          name='password'
-          autoComplete='current-password'
-          variant='standard'
-          onChange={handleChange}
-          sx={{ width: 1, mb: 5 }}
-        />
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          {" "}
+          <h1>Thi is for the image continaer </h1>
+        </Grid>
 
-        <Link to='/signup' style={{ textDecoration: 'none' }}>
-          <Typography variant='p' color='blue' sx={{ fontWeight: 'bold' }}>
-            DO NOT HAVE ACCOUNT ?? REGISTER NOW
-          </Typography>
-        </Link>
-        <Button type='submit' sx={{ width: 1, my: 3 }} variant='contained'>
-          {' '}
-          LOGIN
-        </Button>
-      </form>
-      {isLoading && <CircularProgress />}
-      {user?.email && <Alert severity='success'>Login successfully!</Alert>}
-      {authError && <Alert severity='error'>{authError}</Alert>}
+        <Grid item xs={12} sm={6}>
+          <Box sx={{ paddingLeft: "100px", paddingRight: "100px" }}>
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                id="standard-email-input"
+                label="Email"
+                type="email"
+                name="email"
+                autoComplete="current-email"
+                variant="standard"
+                onChange={handleChange}
+                sx={{ width: 1 }}
+              />
+              <TextField
+                id="standard-password-input"
+                label="Password"
+                type="password"
+                name="password"
+                autoComplete="current-password"
+                variant="standard"
+                onChange={handleChange}
+                sx={{ width: 1, mb: 5 }}
+              />
+
+              <Link to="/signup" style={{ textDecoration: "none" }}>
+                <Typography
+                  variant="p"
+                  color="blue"
+                  sx={{ fontWeight: "bold" }}
+                >
+                  DO NOT HAVE ACCOUNT ?? REGISTER NOW
+                </Typography>
+              </Link>
+              <Button
+                type="submit"
+                sx={{ width: 1, my: 3 }}
+                variant="contained"
+              >
+                {" "}
+                LOGIN
+              </Button>
+            </form>
+            <Divider>OR LOGIN WITH</Divider>
+            <Button
+              type="submit"
+              sx={{ width: 1, my: 3 }}
+              variant="contained"
+              color="error"
+            >
+              <GoogleIcon sx={{ pr: "20px" }} /> | Login With Google
+            </Button>
+            {isLoading && <CircularProgress />}
+            {user?.email && (
+              <Alert severity="success">Login successfully!</Alert>
+            )}
+            {authError && <Alert severity="error">{authError}</Alert>}{" "}
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

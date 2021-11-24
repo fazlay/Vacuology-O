@@ -1,10 +1,21 @@
-import { Alert, Button, CircularProgress, Container, TextField, Typography } from '@mui/material';
-import { Link, useHistory } from 'react-router-dom';
-import React from 'react';
-import useAuth from '../../component/hook/useAuth';
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  Container,
+  Divider,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import useAuth from "../../component/hook/useAuth";
+import { Box } from "@mui/system";
+import GoogleIcon from "@mui/icons-material/Google";
 
 const SignUp = () => {
-  let userInfo = { name: '', email: '', password: '' };
+  let userInfo = { name: "", email: "", password: "" };
   const history = useHistory();
   const { user, registerUser, isLoading, authError } = useAuth();
 
@@ -21,50 +32,80 @@ const SignUp = () => {
   };
 
   return (
-    <Container sx={{ width: '25%' }}>
-      <h2> SignUp Now !!!</h2>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          id='standard-email-input'
-          label='Name'
-          type='text'
-          variant='standard'
-          name='name'
-          onBlur={handleOnBlur}
-          sx={{ width: 1 }}
-        />
-        <TextField
-          id='standard-email-input'
-          label='Email'
-          type='email'
-          variant='standard'
-          name='email'
-          onBlur={handleOnBlur}
-          sx={{ width: 1 }}
-        />
-        <TextField
-          id='standard-password-input'
-          label='Password'
-          type='password'
-          variant='standard'
-          name='password'
-          onBlur={handleOnBlur}
-          sx={{ width: 1 , mb:3}}
-        />
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          {" "}
+          <h2>This is the image container </h2>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          {" "}
+          <Box sx={{ paddingLeft: "100px", paddingRight: "100px" }}>
+            <h2> SignUp Now !!!</h2>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                id="standard-email-input"
+                label="Name"
+                type="text"
+                variant="standard"
+                name="name"
+                onBlur={handleOnBlur}
+                sx={{ width: 1 }}
+              />
+              <TextField
+                id="standard-email-input"
+                label="Email"
+                type="email"
+                variant="standard"
+                name="email"
+                onBlur={handleOnBlur}
+                sx={{ width: 1 }}
+              />
+              <TextField
+                id="standard-password-input"
+                label="Password"
+                type="password"
+                variant="standard"
+                name="password"
+                onBlur={handleOnBlur}
+                sx={{ width: 1, mb: 3 }}
+              />
 
-        <Link to='/login' style={{ textDecoration: 'none' }}>
-          <Typography variant='p' color='blue' sx={{ fontWeight: 'bold' }}>
-            ALREADY HAVE ACCOUNT ?? LOGIN NOW
-          </Typography>
-        </Link>
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Typography
+                  variant="p"
+                  color="blue"
+                  sx={{ fontWeight: "bold" }}
+                >
+                  ALREADY HAVE ACCOUNT ?? LOGIN NOW
+                </Typography>
+              </Link>
 
-        <Button variant='contained' type='submit' sx={{ width: 1, my: 3 }}>
-          Submit
-        </Button>
-      </form>
-      {isLoading && <CircularProgress />}
-                    {user?.email && <Alert severity="success">User Created successfully!</Alert>}
-                    {authError && <Alert severity="error">{authError}</Alert>}
+              <Button
+                variant="contained"
+                type="submit"
+                sx={{ width: 1, my: 3 }}
+              >
+                Submit
+              </Button>
+            </form>
+            <Divider>OR SIGN UP WITH</Divider>
+            <Button
+              type="submit"
+              sx={{ width: 1, my: 3 }}
+              variant="contained"
+              color="error"
+            >
+              <GoogleIcon sx={{ pr: "20px" }} /> | SIGN UP With Google
+            </Button>
+            {isLoading && <CircularProgress />}
+            {user?.email && (
+              <Alert severity="success">User Created successfully!</Alert>
+            )}
+            {authError && <Alert severity="error">{authError}</Alert>}
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 };
