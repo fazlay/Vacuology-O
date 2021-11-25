@@ -15,7 +15,7 @@ const Productdes = ({ selectedProduct }) => {
   const { style, ...mouseHandlers } = use3dEffect(ref);
   console.log(selectedProduct);
   return (
-    <Paper sx={{ padding: "40px" }}>
+    <Paper sx={{ pb: 2, mb: 2, pt: 5, px: 5 }}>
       <Typography
         variant="h4"
         component="h4"
