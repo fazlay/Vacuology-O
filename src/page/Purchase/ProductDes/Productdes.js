@@ -1,27 +1,75 @@
-import { CardMedia, CircularProgress, Paper, Typography } from '@mui/material';
-import React from 'react';
+import {
+  CardMedia,
+  CircularProgress,
+  Divider,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { animated } from "react-spring";
+import { use3dEffect } from "use-3d-effect";
+import React from "react";
 
-const Productdes = ({ selectedProduct}) => {
+const Productdes = ({ selectedProduct }) => {
   const { name, img, description } = selectedProduct;
-
-console.log(selectedProduct);
+  const ref = React.useRef(null);
+  const { style, ...mouseHandlers } = use3dEffect(ref);
+  console.log(selectedProduct);
   return (
-    <>
-      <Typography variant='h4' component='h4'>
-        {name}
+    <Paper sx={{ padding: "40px" }}>
+      <Typography
+        variant="h4"
+        component="h4"
+        sx={{
+          textTransform: "uppercase",
+          fontWeight: "bold",
+          paddingBottom: "20px",
+        }}
+      >
+        {name.slice(0, 20)}
       </Typography>
-      <Paper sx={{ border: 'none', boxShadow: 'none' }}>
+      <animated.div
+        ref={ref}
+        style={{
+          color: "white",
+          padding: "2em",
+          ...style,
+        }}
+        {...mouseHandlers}
+      >
         <CardMedia
-          sx={{ width: '50%', height: '25%' }}
-          component='img'
+          sx={{ width: "50%", height: "25%", mx: "auto" }}
+          component="img"
           image={img}
-          alt='Vacume Claener '
+          alt="Vacume Claener "
+          align="center"
         />
-      </Paper>
-      <Typography variant='p' component='p'>
+      </animated.div>
+      <Typography
+        variant="h5"
+        component="h5"
+        sx={{
+          textTransform: "uppercase",
+          fontWeight: "bold",
+          paddingBottom: "3",
+        }}
+      >
+        product Description
+      </Typography>
+      <Divider />
+      <Typography
+        variant="p"
+        component="p"
+        sx={{
+          mt: 3,
+          fontSize: 16,
+          fontWeight: "light",
+          letterSpacing: 1,
+          mb: 3,
+        }}
+      >
         {description}
       </Typography>
-    </>
+    </Paper>
   );
 };
 

@@ -18,7 +18,9 @@
     "react-reveal": "^1.2.2",
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
+    "react-spring": "^9.3.2",
     "swiper": "6.8.4",
+    "use-3d-effect": "^1.1.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
