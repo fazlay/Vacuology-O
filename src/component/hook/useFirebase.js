@@ -1,4 +1,4 @@
-import initializeAuthentication from '../firebase/firebase.init';
+import initializeAuthentication from "../firebase/firebase.init";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -7,36 +7,37 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-} from 'firebase/auth';
-import { useEffect, useState } from 'react';
+  signInWithPopup,
+} from "firebase/auth";
+import { useEffect, useState } from "react";
 
 initializeAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [authError, setAuthError] = useState('');
+  const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
-  //   const googleProvider = GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
 
   const registerUser = (name, email, password, history) => {
     console.log(name, email, password);
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setAuthError('');
+        setAuthError("");
         const newUser = { email, displayName: name };
         setUser(newUser);
         // save user to the database
-        saveUser(name, email, 'POST');
+        saveUser(name, email, "POST");
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
           .catch((error) => {});
-        history.replace('/');
+        history.replace("/");
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -48,16 +49,31 @@ const useFirebase = () => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const destination = location?.state?.from || '/';
+        const destination = location?.state?.from || "/";
         history.replace(destination);
-        setAuthError('');
+        setAuthError("");
       })
       .catch((error) => {
         setAuthError(error.message);
       })
       .finally(() => setIsLoading(false));
   };
-
+  //google login
+  const signInWithGoogle = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        saveUser(user.email, user.displayName, "PUT");
+        setAuthError("");
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
   //oAuth
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -76,7 +92,7 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        setAuthError('');
+        setAuthError("");
       })
       .catch((error) => {
         // An error happened.
@@ -94,15 +110,13 @@ const useFirebase = () => {
 
   //admin checking ---------------------------------
 
-
-
   const saveUser = (displayName, email, method) => {
     const user = { displayName, email };
     console.log(user);
-    fetch('https://fathomless-sands-30445.herokuapp.com/user', {
+    fetch("https://fathomless-sands-30445.herokuapp.com/user", {
       method: method,
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify(user),
     }).then();
@@ -114,6 +128,7 @@ const useFirebase = () => {
     authError,
     registerUser,
     loginUser,
+    signInWithGoogle,
     logOut,
   };
 };

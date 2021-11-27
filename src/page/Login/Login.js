@@ -18,7 +18,7 @@ import useAuth from "../../component/hook/useAuth";
 
 const Login = () => {
   let userInfo = { email: "", password: "" };
-  const { loginUser, isLoading, authError, user } = useAuth();
+  const { loginUser, isLoading, authError, user, signInWithGoogle } = useAuth();
   const location = useLocation();
   const history = useHistory();
 
@@ -34,6 +34,9 @@ const Login = () => {
     loginUser(userInfo.email, userInfo.password, location, history);
     console.log(userInfo.email, userInfo.password);
     e.preventDefault();
+  };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, history);
   };
   return (
     <Container>
@@ -92,6 +95,9 @@ const Login = () => {
               sx={{ width: 1, my: 3 }}
               variant="contained"
               color="error"
+              onClick={() => {
+                handleGoogleSignIn();
+              }}
             >
               <GoogleIcon sx={{ pr: "20px" }} /> | Login With Google
             </Button>

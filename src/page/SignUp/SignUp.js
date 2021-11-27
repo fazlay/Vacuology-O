@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import React from "react";
 import useAuth from "../../component/hook/useAuth";
 import { Box } from "@mui/system";
@@ -17,7 +17,9 @@ import GoogleIcon from "@mui/icons-material/Google";
 const SignUp = () => {
   let userInfo = { name: "", email: "", password: "" };
   const history = useHistory();
-  const { user, registerUser, isLoading, authError } = useAuth();
+  const { user, registerUser, isLoading, authError, signInWithGoogle } =
+    useAuth();
+  const location = useLocation();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -29,6 +31,9 @@ const SignUp = () => {
     console.log(userInfo.name, userInfo.email, userInfo.password);
     registerUser(userInfo.name, userInfo.email, userInfo.password, history);
     e.preventDefault();
+  };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, history);
   };
 
   return (
@@ -91,10 +96,12 @@ const SignUp = () => {
             </form>
             <Divider>OR SIGN UP WITH</Divider>
             <Button
-              type="submit"
               sx={{ width: 1, my: 3 }}
               variant="contained"
               color="error"
+              onClick={() => {
+                handleGoogleSignIn();
+              }}
             >
               <GoogleIcon sx={{ pr: "20px" }} /> | SIGN UP With Google
             </Button>
