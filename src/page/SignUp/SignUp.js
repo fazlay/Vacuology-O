@@ -13,6 +13,7 @@ import React from "react";
 import useAuth from "../../component/hook/useAuth";
 import { Box } from "@mui/system";
 import GoogleIcon from "@mui/icons-material/Google";
+import LotteLogin from "../../component/lotte/LotteLogin";
 
 const SignUp = () => {
   let userInfo = { name: "", email: "", password: "" };
@@ -41,7 +42,7 @@ const SignUp = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           {" "}
-          <h2>This is the image container </h2>
+          <LotteLogin></LotteLogin>
         </Grid>
         <Grid item xs={12} sm={6}>
           {" "}

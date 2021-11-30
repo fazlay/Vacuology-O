@@ -15,6 +15,7 @@ import React from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import useAuth from "../../component/hook/useAuth";
+import LotteLogin from "../../component/lotte/LotteLogin";
 
 const Login = () => {
   let userInfo = { email: "", password: "" };
@@ -42,8 +43,7 @@ const Login = () => {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          {" "}
-          <h1>Thi is for the image continaer </h1>
+          <LotteLogin></LotteLogin>
         </Grid>
 
         <Grid item xs={12} sm={6}>
