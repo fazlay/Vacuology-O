@@ -1,6 +1,8 @@
 .bannerImage {
   color: white;
   background-image: url('https://i.ibb.co/JKYVnZd/024037-4516.jpg');
+  margin-top: 0px !important;
+
   height: 600px;
 
   background-repeat: no-repeat;

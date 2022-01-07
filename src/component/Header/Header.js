@@ -15,6 +15,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import useAuth from "../hook/useAuth";
+import AllOutIcon from '@mui/icons-material/AllOut';
 
 const Header = () => {
   const [state, setState] = React.useState(false);
@@ -107,12 +108,15 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
+            <AllOutIcon />
             <Typography
               className={bandLogo}
               variant="h5"
               component="div"
               sx={{ flexGrow: 1 }}
+
             >
+
               Vacuology
             </Typography>
             <Box className={menuContainer}>
