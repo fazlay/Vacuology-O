@@ -10,7 +10,7 @@ const Purchase = () => {
   const [selectedProduct, setSelectedProduct] = useState({});
   const [productLoading, setpProductLoading] = useState(true);
   const { id } = useParams();
-  const url = `https://fathomless-sands-30445.herokuapp.com/products/${id}`;
+  const url = `https://vacuology-server.onrender.com/products/${id}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

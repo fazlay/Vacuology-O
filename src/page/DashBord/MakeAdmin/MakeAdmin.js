@@ -12,7 +12,7 @@ const MakeAdmin = () => {
     e.preventDefault();
     const user = { adminMail };
     console.log(user);
-    fetch('https://fathomless-sands-30445.herokuapp.com/user/admin', {
+    fetch('https://vacuology-server.onrender.com/user/admin', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(user),

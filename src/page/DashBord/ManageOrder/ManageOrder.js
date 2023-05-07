@@ -14,7 +14,7 @@ const ManageOrder = () => {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [approveSuccess, setApproveSuccess] = useState(false);
   useEffect(() => {
-    fetch('https://fathomless-sands-30445.herokuapp.com/orders')
+    fetch('https://vacuology-server.onrender.com/orders')
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
@@ -22,7 +22,7 @@ const ManageOrder = () => {
   }, [orders]);
   const handleApprove = (id) => {
     const updateStatus = { status: 'approved' };
-    const orderurl = `https://fathomless-sands-30445.herokuapp.com/orders/${id}`;
+    const orderurl = `https://vacuology-server.onrender.com/orders/${id}`;
     fetch(orderurl, {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
@@ -35,7 +35,7 @@ const ManageOrder = () => {
       });
   };
   const handleDelete = (id) => {
-    const orderurl = `https://fathomless-sands-30445.herokuapp.com/orders/${id}`;
+    const orderurl = `https://vacuology-server.onrender.com/orders/${id}`;
     fetch(orderurl, {
       method: 'DELETE',
     })

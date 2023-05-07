@@ -15,7 +15,7 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://fathomless-sands-30445.herokuapp.com/reviews")
+    fetch("https://vacuology-server.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -66,7 +66,7 @@ export default Reviews;
 // const Reviews = () => {
 //   const [reviews, setReviews] = useState([]);
 //   useEffect(() => {
-//     fetch('https://fathomless-sands-30445.herokuapp.com/reviews')
+//     fetch('https://vacuology-server.onrender.com/reviews')
 //       .then((res) => res.json())
 //       .then((data) => setReviews(data));
 //   }, []);

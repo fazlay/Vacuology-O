@@ -100,7 +100,7 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
   //admin checking ---------------------------------
-  const adminUrl = `https://fathomless-sands-30445.herokuapp.com/user/${user?.email}`;
+  const adminUrl = `https://vacuology-server.onrender.com/user/${user?.email}`;
 
   useEffect(() => {
     fetch(adminUrl)
@@ -113,7 +113,7 @@ const useFirebase = () => {
   const saveUser = (displayName, email, method) => {
     const user = { displayName, email };
     console.log(user);
-    fetch("https://fathomless-sands-30445.herokuapp.com/user", {
+    fetch("https://vacuology-server.onrender.com/user", {
       method: method,
       headers: {
         "content-type": "application/json",

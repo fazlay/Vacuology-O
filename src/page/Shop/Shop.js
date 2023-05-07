@@ -5,7 +5,7 @@ import SingleProduct from '../../component/FeaturedProducts/SingleProduct/Single
 const Shop = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch('https://fathomless-sands-30445.herokuapp.com/products')
+    fetch('https://vacuology-server.onrender.com/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [products]);

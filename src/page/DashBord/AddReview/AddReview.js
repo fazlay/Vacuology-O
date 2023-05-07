@@ -33,7 +33,7 @@ const AddReview = () => {
     e.preventDefault();
     // const review = { userReview };
 
-    fetch('https://fathomless-sands-30445.herokuapp.com/review', {
+    fetch('https://vacuology-server.onrender.com/review', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(userReview),

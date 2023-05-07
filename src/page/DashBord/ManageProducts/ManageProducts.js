@@ -12,12 +12,12 @@ import { Button, IconButton } from '@mui/material';
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch('https://fathomless-sands-30445.herokuapp.com/products')
+    fetch('https://vacuology-server.onrender.com/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [products]);
   const handleDelete = (id) => {
-    const producturl = `https://fathomless-sands-30445.herokuapp.com/products/${id}`;
+    const producturl = `https://vacuology-server.onrender.com/products/${id}`;
     fetch(producturl, {
       method: 'DELETE'
     })

@@ -51,5 +51,5 @@ function App() {
   );
 }
 
-//https://fathomless-sands-30445.herokuapp.com/
+//https://vacuology-server.onrender.com/
 export default App;

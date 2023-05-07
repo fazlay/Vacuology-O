@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    fetch("https://fathomless-sands-30445.herokuapp.com/products")
+    fetch("https://vacuology-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data)

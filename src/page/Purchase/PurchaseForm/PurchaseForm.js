@@ -40,7 +40,7 @@ const PurchaseForm = ({ id, selectedProduct }) => {
   const handlePurchaseSubmit = (e) => {
     e.preventDefault();
     console.log(orderinfo);
-    fetch("https://fathomless-sands-30445.herokuapp.com/orders", {
+    fetch("https://vacuology-server.onrender.com/orders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderinfo),

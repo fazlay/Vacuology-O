@@ -15,14 +15,14 @@ import PendingActionsIcon from '@mui/icons-material/PendingActions';
 const MyOrder = () => {
   const { user } = useAuth();
   const [userOrder, setUserOrder] = useState([]);
-  const orderUrl = `https://fathomless-sands-30445.herokuapp.com/orders/${user.email}`;
+  const orderUrl = `https://vacuology-server.onrender.com/orders/${user.email}`;
   useEffect(() => {
     fetch(orderUrl)
       .then((res) => res.json())
       .then((data) => setUserOrder(data));
   }, [userOrder]);
   const handleDelete = (id) => {
-    const orderurl = `https://fathomless-sands-30445.herokuapp.com/orders/${id}`;
+    const orderurl = `https://vacuology-server.onrender.com/orders/${id}`;
     fetch(orderurl, {
       method: 'DELETE',
     })

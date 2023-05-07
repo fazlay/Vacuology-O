@@ -25,7 +25,7 @@ const AddProduct = () => {
     e.preventDefault();
     console.log(newProduct);
 
-    fetch('https://fathomless-sands-30445.herokuapp.com/products', {
+    fetch('https://vacuology-server.onrender.com/products', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newProduct),
