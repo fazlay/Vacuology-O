@@ -25,9 +25,11 @@
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
     "react-spring": "^9.3.2",
+    "styled-components": "^6.0.0-rc.1",
     "swiper": "6.8.4",
     "use-3d-effect": "^1.1.0",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -38,6 +38,8 @@ const SingleProduct = ({ product }) => {
                   alt="green iguana"
                 />
                 <CardContent>
+         
+
                   <Typography gutterBottom variant="h5" component="div">
                     {name}
                   </Typography>
