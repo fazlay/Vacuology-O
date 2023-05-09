@@ -3,20 +3,21 @@ import { Container, Divider, Grid, Skeleton, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CardSkeleton from "./CardSkeleton";
 import SingleProduct from "./SingleProduct/SingleProduct";
+import { apiMethod } from "../../config/apiMethod";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    fetch("https://vacuology-server.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data)
-        setIsLoading(true)
-      });
+ 
+    apiMethod.get("/products").then((res) => { 
+      console.log({res})
+      setProducts(res.data)
+      setIsLoading(true)
+    })
+
   }, [products]);
 
-  // products.splice(0, 2);
   return (
     <Container>
       <Typography
