@@ -1,6 +1,5 @@
-import { ContentCutOutlined } from "@mui/icons-material";
 import { Container, Divider, Grid, Skeleton, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardSkeleton from "./CardSkeleton";
 import SingleProduct from "./SingleProduct/SingleProduct";
 import { apiMethod } from "../../config/apiMethod";
