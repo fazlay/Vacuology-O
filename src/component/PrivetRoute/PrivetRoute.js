@@ -1,26 +1,19 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
+import Home from '../../page/Home/Home';
 
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRoute = ({ path, ...props }) => {
   const { user, isLoading } = useAuth();
+
   if (isLoading) return 'loading';
+
   return (
     <Route
-      {...rest}
-      render={({ location }) =>
-        user.email ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          ></Redirect>
-        )
-      }
-    ></Route>
+      {...props}
+      path={'sdfsdf'}
+      element={ <Home/>}
+    />
   );
 };
 

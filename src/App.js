@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './page/Home/Home';
 import Shop from './page/Shop/Shop';
 import Login from './page/Login/Login';
@@ -12,42 +12,45 @@ import PrivateRoute from './component/PrivetRoute/PrivetRoute';
 import Footer from './page/Footer/Footer';
 import NotFound from './page/NotFound/NotFound';
 
+import theme from './theme/defaultTheme';
+import { ThemeProvider } from '@mui/material/styles';
+
 function App() {
   return (
+<ThemeProvider theme={theme}>
     <div className='App'>
       <AuthProvider>
         <Router>
           <Header></Header>
-          <Switch>
-            <Route exact path='/'>
-              <Home></Home>
-            </Route>
-            <Route path='/home'>
-              <Home></Home>
-            </Route>
-            <Route path='/shop'>
-              <Shop></Shop>
-            </Route>
-            <Route path='/login'>
-              <Login></Login>
-            </Route>
-            <Route path='/signup'>
-              <SignUp></SignUp>
-            </Route>
-            <PrivateRoute path='/products/:id'>
-              <Purchase></Purchase>
-            </PrivateRoute>
-            <PrivateRoute path='/dashbord'>
-              <DashBord></DashBord>
-            </PrivateRoute>
-            <Route path='*'>
-              <NotFound></NotFound>
-            </Route>
-          </Switch>
+           <Routes>
+            <Route exact path='/' element={<Home/>}/>
+            <Route  path='home' element={<Home/>}/>
+            <Route  path='shop' element={<Shop/>}/>
+            <Route  path='login' element={<Login/>}/>
+            <Route  path='signup' element={<SignUp/>}/>
+            <Route  path='signup' element={<SignUp/>}/>
+            <Route  path='signup' element={<SignUp/>}/>
+            <Route  path='signup' element={<SignUp/>}/>
+            <Route  path='signup' element={<SignUp/>}/>
+            <Route  path='signup' element={<SignUp/>}/>
+         
+            <Route
+      path="/products/:id"
+      element={<PrivateRoute component={<Purchase />} />}
+    />
+            <Route
+      path="/dashbord"
+      element={<PrivateRoute component= {<DashBord/>} />}
+    />
+
+        
+            <Route path='*' element={<NotFound/>}/>
+          </Routes> 
           <Footer></Footer>
         </Router>
-      </AuthProvider>
+        </AuthProvider>
     </div>
+ </ThemeProvider>
   );
 }
 

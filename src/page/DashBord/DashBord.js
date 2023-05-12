@@ -19,6 +19,7 @@ import { deepPurple } from '@mui/material/colors';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { Route, Switch, useRouteMatch } from 'react-router';
+import {Routes } from 'react-router-dom';
 import ManageOrder from './ManageOrder/ManageOrder';
 import MyOrder from './MyOrder/MyOrder';
 import AddProduct from './AddProduct/AddProduct';
@@ -94,7 +95,7 @@ const DashBord = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  let { path, url } = useRouteMatch();
+  let { path, url } = ['', '']
   return (
     <>
       <Box sx={{ display: 'flex' }}>
@@ -210,7 +211,7 @@ const DashBord = () => {
           <DrawerHeader />
         </Main> */}
 
-        <Switch>
+        <Routes>
           <Route exact path={`${path}/`}>
             <AddReview></AddReview>
           </Route>
@@ -229,7 +230,7 @@ const DashBord = () => {
           <Route path={`${path}/manageproducts`}>
             <ManageProducts></ManageProducts>
           </Route>
-        </Switch>
+        </Routes>
       </Box>
     </>
   );

@@ -12,16 +12,17 @@ import { Box } from "@mui/system";
 import GoogleIcon from "@mui/icons-material/Google";
 
 import React from "react";
-import { useHistory, useLocation } from "react-router";
+import {  useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import useAuth from "../../component/hook/useAuth";
 import LotteLogin from "../../component/lotte/LotteLogin";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   let userInfo = { email: "", password: "" };
   const { loginUser, isLoading, authError, user, signInWithGoogle } = useAuth();
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const field = e.target.name;
@@ -32,12 +33,12 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    loginUser(userInfo.email, userInfo.password, location, history);
+    loginUser(userInfo.email, userInfo.password, location, navigate);
     console.log(userInfo.email, userInfo.password);
     e.preventDefault();
   };
   const handleGoogleSignIn = () => {
-    signInWithGoogle(location, history);
+    signInWithGoogle(location, navigate);
   };
   return (
     <Container>

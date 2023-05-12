@@ -15,7 +15,7 @@ const FeaturedProducts = () => {
       setIsLoading(true)
     })
 
-  }, [products]);
+  }, []);
 
   return (
     <Container>

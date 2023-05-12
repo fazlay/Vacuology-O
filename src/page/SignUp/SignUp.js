@@ -8,16 +8,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React from "react";
 import useAuth from "../../component/hook/useAuth";
 import { Box } from "@mui/system";
 import GoogleIcon from "@mui/icons-material/Google";
 import LotteLogin from "../../component/lotte/LotteLogin";
-
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   let userInfo = { name: "", email: "", password: "" };
-  const history = useHistory();
+  const navigate = useNavigate();
   const { user, registerUser, isLoading, authError, signInWithGoogle } =
     useAuth();
   const location = useLocation();
@@ -30,11 +30,11 @@ const SignUp = () => {
   };
   const handleSubmit = (e) => {
     console.log(userInfo.name, userInfo.email, userInfo.password);
-    registerUser(userInfo.name, userInfo.email, userInfo.password, history);
+    registerUser(userInfo.name, userInfo.email, userInfo.password, navigate);
     e.preventDefault();
   };
   const handleGoogleSignIn = () => {
-    signInWithGoogle(location, history);
+    signInWithGoogle(location, navigate);
   };
 
   return (
