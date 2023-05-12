@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
   useEffect(() => {
     apiMethod.get("/products").then((res) => {
       const manipulateData = res.data.splice(4, 0, null);
-      // console.log({ manipulateData });
+
       setProducts(res.data);
       setIsLoading(true);
     });
@@ -26,10 +26,9 @@ const FeaturedProducts = () => {
         component="div"
         sx={{ fontWeight: "bold", pt: 5, textAlign: "center" }}
       >
-        Our Available Products
+        Our Products
       </Typography>
-      <Divider variant="middle" />
-      <>{console.log(products)}</>
+
       <Grid container spacing={2}>
         {!isLoading ? (
           <Skeleton>
