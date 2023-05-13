@@ -4,6 +4,7 @@ import CardSkeleton from "./CardSkeleton";
 import SingleProduct from "./SingleProduct/SingleProduct";
 import { apiMethod } from "../../config/apiMethod";
 import ProTipCard from "../common/ProTiopCard";
+import { HeaderTitleText } from "../../page/Home/style";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<any>([]);
@@ -19,15 +20,7 @@ const FeaturedProducts = () => {
 
   return (
     <Container>
-      <Typography
-        gutterBottom
-        variant="h3"
-        color="text.secondary"
-        component="div"
-        sx={{ fontWeight: "bold", pt: 5, textAlign: "center" }}
-      >
-        Our Products
-      </Typography>
+      <HeaderTitleText>Our Products</HeaderTitleText>
 
       <Grid container spacing={2}>
         {!isLoading ? (

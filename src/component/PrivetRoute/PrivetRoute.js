@@ -1,20 +1,14 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 import useAuth from '../hook/useAuth';
-import Home from '../../page/Home/Home';
 
-const PrivateRoute = ({ path, ...props }) => {
-  const { user, isLoading } = useAuth();
+
+const PrivateRoute= () => {
+  const { user, isLoading }= useAuth();
 
   if (isLoading) return 'loading';
 
-  return (
-    <Route
-      {...props}
-      path={'sdfsdf'}
-      element={ <Home/>}
-    />
-  );
-};
-
+  return user?.email ?  <Outlet/> : <Navigate to="/login" />;
+}
 export default PrivateRoute;

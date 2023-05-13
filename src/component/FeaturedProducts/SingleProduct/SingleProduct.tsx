@@ -49,6 +49,7 @@ const PrimaryButton = styled(LoadingButton)`
   border-radius: 100px;
   width: 100%;
   margin: 12px 0px;
+  font-wight: 700;
 `;
 const CardMediaContainer = styled(CardMedia)`
   background: rgb(2, 0, 36);
@@ -72,6 +73,10 @@ const ActionContainer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 `;
+const Image = styled.img`
+  width: 100%;
+  p: 50px;
+`;
 
 const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
@@ -88,19 +93,7 @@ const SingleProduct = ({ product }) => {
           }}
         >
           <CardActionArea sx={{ p: "20px" }}>
-            {/* <Link
-              to={`/products/${_id}`}
-              style={{ textDecoration: "none", p: 0 }}
-            > */}
-            <CardMediaContainer
-              image={img}
-              sx={{
-                width: "100px",
-                height: "100px",
-                margin: "auto",
-                py: 5,
-              }}
-            />
+            <Image src={img} alt="Product Image " />
             <ProductTitle>{name.slice(0, 10)}</ProductTitle>
             <SubTitle>{description.slice(0, 50)}</SubTitle>
             <ActionContainer>
@@ -119,7 +112,7 @@ const SingleProduct = ({ product }) => {
                 <SmallText sx={{ display: "inline" }}>Free Gift</SmallText>
               </FooterItemContainer>
             </FooterItemContainer>
-            {/* </Link> */}
+
             <div>
               <PrimaryButton
                 onClick={() => navigate(`/products/${_id}`)}

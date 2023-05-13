@@ -102,11 +102,18 @@ const useFirebase = () => {
   //admin checking ---------------------------------
   const adminUrl = `https://vacuology-server.onrender.com/user/${user?.email}`;
 
-  useEffect(() => {
-    fetch(adminUrl)
-      .then((res) => res.json())
-      .then((data) => setAdmin(data.admin));
-  }, [user?.email]);
+  // useEffect(() => {
+  //   fetch(adminUrl)
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         return res.json();
+        
+  //     } else {
+  //       throw new Error('Response status was not 200');
+  //     }
+  //     })
+  //     .then((data) => setAdmin(data.admin));
+  // }, [user?.email]);
 
   //admin checking ---------------------------------
 

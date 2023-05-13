@@ -1,13 +1,14 @@
 import { Container, Divider, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import SingleProduct from '../../component/FeaturedProducts/SingleProduct/SingleProduct';
+import { apiMethod } from '../../config/apiMethod';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch('https://vacuology-server.onrender.com/products')
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+  apiMethod.get('/products')
+  
+      .then((data) => setProducts(data.data));
   }, [products]);
   return (
     <Container>

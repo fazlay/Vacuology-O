@@ -212,24 +212,15 @@ const DashBord = () => {
         </Main> */}
 
         <Routes>
-          <Route exact path={`${path}/`}>
-            <AddReview></AddReview>
-          </Route>
-          <Route path={`${path}/manageorder`}>
-            <ManageOrder></ManageOrder>
-          </Route>
-          <Route path={`${path}/myorder`}>
-            <MyOrder></MyOrder>
-          </Route>
-          <Route path={`${path}/addproduct`}>
-            <AddProduct></AddProduct>
-          </Route>
-          <Route path={`${path}/makeadmin`}>
-            <MakeAdmin></MakeAdmin>
-          </Route>
-          <Route path={`${path}/manageproducts`}>
-            <ManageProducts></ManageProducts>
-          </Route>
+          
+          <Route path={``} element={<AddReview />} />
+          
+          <Route path={`manageorder`} element={<ManageOrder/>}/>
+          <Route path={`myorder`} element={<MyOrder />} />
+          <Route path={`addproduct`} element={<AddProduct />} />
+          <Route path={`makeadmin`} element={<MakeAdmin />} />
+          <Route path={`manageproducts`} element={<ManageProducts />} />
+        
         </Routes>
       </Box>
     </>
