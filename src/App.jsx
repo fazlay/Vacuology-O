@@ -14,9 +14,17 @@ import NotFound from "./page/NotFound/NotFound";
 
 import theme from "./theme/defaultTheme";
 import { ThemeProvider } from "@mui/material/styles";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
+const stripePromise = loadStripe('pk_test_51N9qRYGFm1wEu19JkhOS1YZTcH8UVXRt5L1nV4VwVLdFANFBCBl6DMXtuIt7ddzleSxSbvVdNUDjXinS3c0c2aEl00JSTj2DEi');
 function App() {
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: 'pk_test_51N9qRYGFm1wEu19JkhOS1YZTcH8UVXRt5L1nV4VwVLdFANFBCBl6DMXtuIt7ddzleSxSbvVdNUDjXinS3c0c2aEl00JSTj2DEi',
+  };
   return (
+    <Elements stripe={stripePromise} >
     <ThemeProvider theme={theme}>
       <div className="App">
         <AuthProvider>
@@ -41,7 +49,8 @@ function App() {
           </Router>
         </AuthProvider>
       </div>
-    </ThemeProvider>
+      </ThemeProvider>
+      </Elements>
   );
 }
 
